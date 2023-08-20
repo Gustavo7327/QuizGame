@@ -6,30 +6,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="panequestion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="panequestion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.questionscontroller">
    <children>
-      <RadioButton fx:id="resposta1" layoutX="20.0" layoutY="190.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="715.0" text="digitando muito texto para ver como sera exibido aaaaaaaaaaaaa aaaaaaaaaaa" wrapText="true">
+      <RadioButton fx:id="resposta1" layoutX="20.0" layoutY="190.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="digitando muito texto para ver como sera exibido aaaaaaaaaaaaa aaaaaaaaaaa" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="resposta2" layoutX="20.0" layoutY="250.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="715.0" text="RadioButton">
+      <RadioButton fx:id="resposta2" layoutX="20.0" layoutY="250.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="RadioButton">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="resposta3" layoutX="20.0" layoutY="310.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="715.0" text="RadioButton">
+      <RadioButton fx:id="resposta3" layoutX="20.0" layoutY="310.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="RadioButton">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="resposta4" layoutX="20.0" layoutY="370.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="715.0" text="RadioButton">
+      <RadioButton fx:id="resposta4" layoutX="20.0" layoutY="370.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="RadioButton">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <Button fx:id="buttonverificar" layoutX="561.0" layoutY="448.0" mnemonicParsing="false" onAction="#newQuestion" prefHeight="32.0" prefWidth="160.0" text="VERIFICAR">
+      <Button fx:id="buttonverificar" layoutX="561.0" layoutY="448.0" mnemonicParsing="false" onAction="#verificar" prefHeight="32.0" prefWidth="160.0" text="VERIFICAR">
          <font>
             <Font size="17.0" />
          </font>
