@@ -1,0 +1,13 @@
+
+#labelstart{
+    -fx-text-fill:yellow;
+}
+#panestart{
+    -fx-background-color:rgb(11, 96, 192);
+}
+
+#startbutton{
+    -fx-background-color:white;
+    -fx-text-fill:black;
+}
+

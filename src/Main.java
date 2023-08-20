@@ -1,5 +1,7 @@
 package src;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,12 +14,15 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("startscene.fxml"));
+    public void start(Stage stage) throws IOException{
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("scene.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
+        String css = this.getClass().getResource("animationlabel.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
-        stage.setTitle("Gases nobres game");
         stage.show();
+ 
     }
 }
