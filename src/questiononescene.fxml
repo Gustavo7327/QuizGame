@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="panequestion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.questionscontroller">
+<AnchorPane fx:id="panequestion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.questiononecontroller">
    <children>
-      <RadioButton fx:id="resposta1" layoutX="20.0" layoutY="190.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" wrapText="true" toggleGroup="$options">
+      <RadioButton fx:id="resposta1" layoutX="20.0" layoutY="190.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" toggleGroup="$options" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
@@ -17,17 +17,17 @@
             <ToggleGroup fx:id="options" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="resposta2" layoutX="20.0" layoutY="250.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" wrapText="true" toggleGroup="$options">
+      <RadioButton fx:id="resposta2" layoutX="20.0" layoutY="250.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" toggleGroup="$options" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="resposta3" layoutX="20.0" layoutY="310.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" wrapText="true" toggleGroup="$options">
+      <RadioButton fx:id="resposta3" layoutX="20.0" layoutY="310.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" toggleGroup="$options" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="resposta4" layoutX="20.0" layoutY="370.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" wrapText="true" toggleGroup="$options">
+      <RadioButton fx:id="resposta4" layoutX="20.0" layoutY="370.0" mnemonicParsing="false" onAction="#displayoptions" prefHeight="54.0" prefWidth="715.0" text="" toggleGroup="$options" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>

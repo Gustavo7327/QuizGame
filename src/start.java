@@ -55,7 +55,7 @@ public class start implements Initializable{
     @FXML
     void startGame(ActionEvent event) throws IOException {
             System.out.println("funcionou");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionsscene.fxml")); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questiononescene.fxml")); 
             root = loader.load();
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);

@@ -21,10 +21,48 @@ import javafx.stage.Stage;
 
 public class imagecontroller implements Initializable{
 
-    Random random = new Random();
+    private Random random = new Random();
 
     String[] people = {
-
+        "Allicia",
+        "Ana Grazielly",
+        "Anahellen",
+        "André Vasco",
+        "Mateus",
+        "Gustavo(Augusto)",
+        "Daniel",
+        "Davi",
+        "Emilly Izabely",
+        "Emilly Vitoria",
+        "Erick Maycon",
+        "Alyson",
+        "Junior",
+        "Gabriella",
+        "Gianne Karine",
+        "Guilherme",
+        "Isabelle",
+        "Jamilly",
+        "Jose italo",
+        "Joyce",
+        "Julio Cesar",
+        "Kaua Rodrigues",
+        "Pikao",
+        "Diogo",
+        "Beatriz",
+        "Bianca",
+        "Gloria",
+        "Eduarda Silva",
+        "Eduarda Lopes",
+        "Maria Luisa",
+        "Mario",
+        "Miguel",
+        "Murilo",
+        "Nicollas",
+        "Pedro Italo",
+        "Pedro Lucas",
+        "Vinicius",
+        "Washington",
+        "Willian"
     };
 
     private Parent root;
@@ -48,20 +86,26 @@ public class imagecontroller implements Initializable{
 
     Image image = new Image(getClass().getResourceAsStream("sabomuito.jpg"));
     Image image2 = new Image(getClass().getResourceAsStream("mas.jpg"));
-    questionscontroller questionscontroller = new questionscontroller();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
          
-         if(questionscontroller.questionone == true){
-         imageverification.setImage(image);
-         } else{
-            imageverification.setImage(image2);
-         }
+        imageverification.setImage(image);
+        for(int i = 0; i < 39; i++){
+            int lucky = random.nextInt(39);
+            labelname.setText(people[lucky]);
+            System.out.println(lucky);
+            try {
+                Thread.sleep(90);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
     void nextQuestion(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("questionsscene.fxml")); 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("questiontwoscene.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {
