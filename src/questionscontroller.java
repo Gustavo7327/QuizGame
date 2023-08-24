@@ -1,30 +1,25 @@
 package src;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class questionscontroller implements Initializable{
 
     String resposta;
-    // String respostaOne;
-    // String respostaTwo;
-    // String respostaThree;
-    // String respostaFour;
-    // String respostaFive;
-    // String respostaSix;
-    // String respostaSeven;
-    // String respostaEight;
-    // String respostaNine;
-    // String respostaTen;
-
     int score;
 
     String[] questions = {
@@ -154,6 +149,21 @@ public class questionscontroller implements Initializable{
     @FXML
     private RadioButton resposta4;
 
+    boolean questionone = false;
+    boolean questiontwo = false;
+    boolean questionthree = false;
+    boolean questionfour = false;
+    boolean questionfive = false;
+    boolean questionsix = false;
+    boolean questionseven = false;
+    boolean questioneight = false;
+    boolean questionnine = false;
+    boolean questionten = false;
+
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         questionOne();
@@ -162,19 +172,15 @@ public class questionscontroller implements Initializable{
     @FXML
     void displayoptions(ActionEvent event) {
         if(resposta1.isSelected()){
-            //respostaOne = "a";
             resposta = "a";
         }
         else if(resposta2.isSelected()){
-            //respostaOne = "b";
             resposta = "b";
         }
         else if(resposta3.isSelected()){
-            //respostaOne = "c";
             resposta = "c";
         }
         else if(resposta4.isSelected()){
-            //respostaOne = "d";
             resposta = "d";
         }
     }
@@ -184,13 +190,26 @@ public class questionscontroller implements Initializable{
         if(resposta.equals(responses[0])){
             score++;
             System.out.println(score);
-            questionTwo();
-        } else{
+            questionone = true;
+            //questionTwo();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            } else{
             System.out.println(score);
             score += 0;
-            questionTwo();
-        }
-    }
+            questionone = false;
+            //questionTwo();   
+        }   
+             
+     }
 
     public void questionOne(){
 
@@ -199,7 +218,7 @@ public class questionscontroller implements Initializable{
         resposta2.setText(questionOneOptions[1]);
         resposta3.setText(questionOneOptions[2]);
         resposta4.setText(questionOneOptions[3]);
-       
+        
     }
 
     public void questionTwo(){
@@ -210,43 +229,165 @@ public class questionscontroller implements Initializable{
         resposta4.setText(questionTwoOptions[3]);
         if(resposta.equals(responses[1])){
             score++;
+            questiontwo = true;
             System.out.println(score);
+            // questionThree();
         } else{
             score += 0;
+            questiontwo = true;
             System.out.println(score);
+            // questionThree();
         }
     }
         
     public void questionThree(){
-
+        labelpergunta.setText(questions[2]);
+        resposta1.setText(questionThreeOptions[0]);
+        resposta2.setText(questionThreeOptions[1]);
+        resposta3.setText(questionThreeOptions[2]);
+        resposta4.setText(questionThreeOptions[3]);
+        if(resposta.equals(responses[2])){
+            score++;
+            questionthree = true;
+            System.out.println(score);
+            // questionFour();
+        } else{
+            score += 0;
+            questionthree = true;
+            System.out.println(score);
+            // questionFour();
+        }
     }
 
     public void questionFour(){
-        
+        labelpergunta.setText(questions[3]);
+        resposta1.setText(questionFourOptions[0]);
+        resposta2.setText(questionFourOptions[1]);
+        resposta3.setText(questionFourOptions[2]);
+        resposta4.setText(questionFourOptions[3]);
+        if(resposta.equals(responses[3])){
+            score++;
+            questionfour = true;
+            System.out.println(score);
+            // questionFive();
+        } else{
+            score += 0;
+            questionfour = true;
+            System.out.println(score);
+            // questionFive();
+        }
     }
 
     public void questionFive(){
-        
+        labelpergunta.setText(questions[4]);
+        resposta1.setText(questionFiveOptions[0]);
+        resposta2.setText(questionFiveOptions[1]);
+        resposta3.setText(questionFiveOptions[2]);
+        resposta4.setText(questionFiveOptions[3]);
+        if(resposta.equals(responses[4])){
+            score++;
+            questionfive = true;
+            System.out.println(score);
+            // questionSix();
+        } else{
+            score += 0;
+            questionfive = true;
+            System.out.println(score);
+            // questionSix();
+        }
     }
 
     public void questionSix(){
-        
+        labelpergunta.setText(questions[5]);
+        resposta1.setText(questionSixOptions[0]);
+        resposta2.setText(questionSixOptions[1]);
+        resposta3.setText(questionSixOptions[2]);
+        resposta4.setText(questionSixOptions[3]);
+        if(resposta.equals(responses[5])){
+            score++;
+            questionsix = true;
+            System.out.println(score);
+            // questionSeven();
+        } else{
+            score += 0;
+            questionsix = true;
+            System.out.println(score);
+            // questionSeven();
+        }
     }
 
     public void questionSeven(){
-        
+        labelpergunta.setText(questions[6]);
+        resposta1.setText(questionSevenOptions[0]);
+        resposta2.setText(questionSevenOptions[1]);
+        resposta3.setText(questionSevenOptions[2]);
+        resposta4.setText(questionSevenOptions[3]);
+        if(resposta.equals(responses[6])){
+            score++;
+            questionseven = true;
+            System.out.println(score);
+            // questionEight();
+        } else{
+            score += 0;
+            questionseven = true;
+            System.out.println(score);
+            // questionEight();
+        }
     }
 
     public void questionEight(){
-        
+        labelpergunta.setText(questions[7]);
+        resposta1.setText(questionEightOptions[0]);
+        resposta2.setText(questionEightOptions[1]);
+        resposta3.setText(questionEightOptions[2]);
+        resposta4.setText(questionEightOptions[3]);
+        if(resposta.equals(responses[7])){
+            score++;
+            questioneight = true;
+            System.out.println(score);
+            // questionNine();
+        } else{
+            score += 0;
+            questioneight = true;
+            System.out.println(score);
+            // questionNine();
+        }
     }
 
     public void questionNine(){
-        
+        labelpergunta.setText(questions[8]);
+        resposta1.setText(questionNineOptions[0]);
+        resposta2.setText(questionNineOptions[1]);
+        resposta3.setText(questionNineOptions[2]);
+        resposta4.setText(questionNineOptions[3]);
+        if(resposta.equals(responses[8])){
+            score++;
+            questionnine = true;
+            System.out.println(score);
+            // questionTen();
+        } else{
+            score += 0;
+            questionnine = true;
+            System.out.println(score);
+            // questionTen();
+        }
     }
 
     public void questionTen(){
-        
+        labelpergunta.setText(questions[9]);
+        resposta1.setText(questionTenOptions[0]);
+        resposta2.setText(questionTenOptions[1]);
+        resposta3.setText(questionTenOptions[2]);
+        resposta4.setText(questionTenOptions[3]);
+        if(resposta.equals(responses[9])){
+            score++;
+            questionten = true;
+            System.out.println(score);
+        } else{
+            score += 0;
+            questionten = true;
+            System.out.println(score);
+        }
     }
 
 }
