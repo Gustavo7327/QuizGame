@@ -3,7 +3,6 @@ package src;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
@@ -43,17 +42,14 @@ public class start implements Initializable{
     private Scene scene;
     private Media media;
     private MediaPlayer mediaplayer;
-    private ArrayList<File> songs;
-    private int songnumber;
     private File file;
 
     Image image = new Image(getClass().getResourceAsStream("masss.png"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        songs = new ArrayList<File>();
-        file = new File("src.pouestourado.mp3");
-        songs.add(file);
+
+        file = new File("src/pouestourado.mp3");
         imagestart.setImage(image);
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(labelstart);
@@ -61,8 +57,15 @@ public class start implements Initializable{
         translate.setDuration(Duration.millis(3000));
         translate.setCycleCount(1);
         translate.play();
-         media = new Media(songs.get(songnumber).toURI().toString());
+         media = new Media(file.toURI().toString());
          mediaplayer = new MediaPlayer(media);
+         mediaplayer.setOnEndOfMedia(new Runnable(){
+            @Override
+            public void run(){
+                mediaplayer.seek(Duration.ZERO);
+                mediaplayer.play();
+            }
+         });
          mediaplayer.play();
     }
     

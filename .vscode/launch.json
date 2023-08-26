@@ -17,7 +17,7 @@
             "request": "launch",
             "mainClass": "src.Main",
             "projectName": "GasesNobres_497dee72",
-            "vmArgs": "--module-path \"/home/guilherme/Downloads/javafx-sdk-20.0.2/lib/\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"/home/guilherme/Downloads/javafx-sdk-20.0.2/lib/\" --add-modules javafx.controls,javafx.fxml,javafx.media"
         }
     ]
 }
