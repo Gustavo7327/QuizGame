@@ -29,7 +29,7 @@ public class imagecontroller implements Initializable{
         "Anahellen",
         "André Vasco",
         "Mateus",
-        "Gustavo(Augusto)",
+        "Gustavo",
         "Daniel",
         "Davi",
         "Emilly Izabely",
@@ -79,28 +79,21 @@ public class imagecontroller implements Initializable{
     private Label labelname;
 
     @FXML
+    private Button buttonluck;
+
+    @FXML
     private Label msglabel;
 
     @FXML
     private AnchorPane paneimage;
 
     Image image = new Image(getClass().getResourceAsStream("sabomuito.jpg"));
-    Image image2 = new Image(getClass().getResourceAsStream("mas.jpg"));
+    Image image2 = new Image(getClass().getResourceAsStream("masss.png"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         
-        imageverification.setImage(image);
-        for(int i = 0; i < 39; i++){
-            int lucky = random.nextInt(39);
-            labelname.setText(people[lucky]);
-            System.out.println(lucky);
-            try {
-                Thread.sleep(90);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+         imageverification.setImage(image);
+        
     }
 
     @FXML
@@ -115,6 +108,22 @@ public class imagecontroller implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+    }
+
+    @FXML
+    void sortear(ActionEvent event){
+        
+        for(int i = 0; i < 39; i++){
+            int lucky = random.nextInt(39);
+            labelname.setText(people[lucky]);
+            System.out.println(lucky);
+            System.out.println(people[lucky]);
+            try {
+                Thread.sleep(80);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

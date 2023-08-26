@@ -1,7 +1,9 @@
 package src;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
@@ -17,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -37,12 +41,19 @@ public class start implements Initializable{
     private Parent root;
     private Stage stage;
     private Scene scene;
+    private Media media;
+    private MediaPlayer mediaplayer;
+    private ArrayList<File> songs;
+    private int songnumber;
+    private File file;
 
-    Image image = new Image(getClass().getResourceAsStream("mas.jpg"));
+    Image image = new Image(getClass().getResourceAsStream("masss.png"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        songs = new ArrayList<File>();
+        file = new File("src.pouestourado.mp3");
+        songs.add(file);
         imagestart.setImage(image);
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(labelstart);
@@ -50,6 +61,9 @@ public class start implements Initializable{
         translate.setDuration(Duration.millis(3000));
         translate.setCycleCount(1);
         translate.play();
+         media = new Media(songs.get(songnumber).toURI().toString());
+         mediaplayer = new MediaPlayer(media);
+         mediaplayer.play();
     }
     
     @FXML
@@ -62,8 +76,6 @@ public class start implements Initializable{
             stage.setScene(scene);
             stage.show();
     }
-
-    
 
 }
 
