@@ -1,6 +1,10 @@
 package src;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,10 +25,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class questiononecontroller implements Initializable{
+public class QuestionOneController implements Initializable{
 
     String resposta;
-    int score;
 
     String[] questions = {
         "Quantos elementos possuem os gases nobres e quais são eles?",
@@ -98,6 +101,10 @@ public class questiononecontroller implements Initializable{
     private MediaPlayer mediaplayer;
     private Media media;
     private File file;
+    private FileWriter filetxt;
+    int perguntasRespondidas;
+    int score;
+    boolean verification;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -133,22 +140,56 @@ public class questiononecontroller implements Initializable{
 
     @FXML
     void verificar(ActionEvent event) {
-        if(resposta.equals(responses[0])){
-            score++;
-            System.out.println(score);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
+        String directory = System.getProperty("user.dir");
+        String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
+        
+        try{
+            BufferedReader bfr = new BufferedReader(new FileReader(caminho));
+            String line;
+            while((line = bfr.readLine()) != null){
+                String[] nums = line.split(",");
+
+                perguntasRespondidas = Integer.parseInt(nums[0]);
+
+                score = Integer.parseInt(nums[1]);
+
+                verification = Boolean.parseBoolean(nums[2]);
             }
+            bfr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
+        if(resposta.equals(responses[0])){
+            score++; 
+            verification = true;  
+        } 
+
+        perguntasRespondidas++;
+        try{
+            filetxt = new FileWriter(caminho);
+            BufferedWriter bfw = new BufferedWriter(filetxt);
+            String newValues = perguntasRespondidas + "," + score + "," + verification;
+            bfw.write(newValues);
+            bfw.flush();
+            bfw.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            mediaplayer.stop();
-        }   
-             
+            mediaplayer.stop();    
      }
 
     public void questionOne(){

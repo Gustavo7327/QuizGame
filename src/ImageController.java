@@ -1,6 +1,8 @@
 package src;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
@@ -21,9 +23,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-public class imagecontroller implements Initializable{
+public class ImageController implements Initializable{
 
     private Random random = new Random();
 
@@ -94,23 +95,52 @@ public class imagecontroller implements Initializable{
     private Media media;
     private MediaPlayer mediaplayer;
     private File file;
+    int score;
+    int perguntasRespondidas;
+    boolean verification;
+
     Image image = new Image(getClass().getResourceAsStream("sabomuito.jpg"));
     Image image2 = new Image(getClass().getResourceAsStream("Perdi.png"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         imageverification.setImage(image);
-         file = new File("src/breakingbadtheme.mp3");
-         media = new Media(file.toURI().toString());
-         mediaplayer = new MediaPlayer(media);
-         mediaplayer.setOnEndOfMedia(new Runnable(){
-            @Override
-            public void run(){
-                mediaplayer.seek(Duration.ZERO);
-                mediaplayer.play();
+
+        String directory = System.getProperty("user.dir");
+        String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
+        
+        try{
+            BufferedReader bfr = new BufferedReader(new FileReader(caminho));
+            String line;
+            while((line = bfr.readLine()) != null){
+                String[] nums = line.split(",");
+
+                perguntasRespondidas = Integer.parseInt(nums[0]);
+
+                score = Integer.parseInt(nums[1]);
+
+                verification = Boolean.parseBoolean(nums[2]);
             }
-         });
-         mediaplayer.play();
+            bfr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
+        if(verification == true){
+            imageverification.setImage(image);
+            file = new File("src/breakingbadtheme.mp3");
+            media = new Media(file.toURI().toString());
+            mediaplayer = new MediaPlayer(media);
+            mediaplayer.play();
+        }
+        else if(verification == false){
+            imageverification.setImage(image2);
+            file = new File("src/supermariogameover.mp3");
+            media = new Media(file.toURI().toString());
+            mediaplayer = new MediaPlayer(media);
+            mediaplayer.play();
+        }
+                      
     }
 
     @FXML

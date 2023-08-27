@@ -23,7 +23,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class start implements Initializable{
+public class Start implements Initializable{
 
     @FXML
     private Button startbutton;
@@ -43,7 +43,7 @@ public class start implements Initializable{
     private Media media;
     private MediaPlayer mediaplayer;
     private File file;
-
+    
     Image image = new Image(getClass().getResourceAsStream("masss.png"));
 
     @Override
