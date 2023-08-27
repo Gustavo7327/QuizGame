@@ -1,5 +1,6 @@
 package src;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class questiontencontroller implements Initializable{
 
@@ -54,10 +58,24 @@ public class questiontencontroller implements Initializable{
     private Parent root;
     private Stage stage;
     private Scene scene;
+    private MediaPlayer mediaplayer;
+    private Media media;
+    private File file;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         questionTen();
+        file = new File("src/LThemePianoCover.mp3");
+        media = new Media(file.toURI().toString());
+        mediaplayer = new MediaPlayer(media);
+        mediaplayer.setOnEndOfMedia(new Runnable(){
+            @Override
+            public void run(){
+                mediaplayer.seek(Duration.ZERO);
+                mediaplayer.play();
+            }
+         });
+         mediaplayer.play();
     }
 
     @FXML
@@ -90,20 +108,21 @@ public class questiontencontroller implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            } else {
-            System.out.println();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            mediaplayer.stop();
+            } //else {
+        //     System.out.println();
+        //     FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
+        //     try {
+        //         root = loader.load();
+        //     } catch (IOException e) {
+        //         e.printStackTrace();
+        //     }
+        //     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        //     scene = new Scene(root);
+        //     stage.setScene(scene);
+        //     stage.show();
             
-        }   
+        // }   
              
      }
 

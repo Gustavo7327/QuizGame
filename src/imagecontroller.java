@@ -1,5 +1,6 @@
 package src;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
@@ -17,7 +18,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class imagecontroller implements Initializable{
 
@@ -87,13 +91,26 @@ public class imagecontroller implements Initializable{
     @FXML
     private AnchorPane paneimage;
 
+    private Media media;
+    private MediaPlayer mediaplayer;
+    private File file;
     Image image = new Image(getClass().getResourceAsStream("sabomuito.jpg"));
-    Image image2 = new Image(getClass().getResourceAsStream("masss.png"));
+    Image image2 = new Image(getClass().getResourceAsStream("Perdi.png"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
          imageverification.setImage(image);
-        
+         file = new File("src/breakingbadtheme.mp3");
+         media = new Media(file.toURI().toString());
+         mediaplayer = new MediaPlayer(media);
+         mediaplayer.setOnEndOfMedia(new Runnable(){
+            @Override
+            public void run(){
+                mediaplayer.seek(Duration.ZERO);
+                mediaplayer.play();
+            }
+         });
+         mediaplayer.play();
     }
 
     @FXML
@@ -108,6 +125,7 @@ public class imagecontroller implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            mediaplayer.stop();
     }
 
     @FXML
