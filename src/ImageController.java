@@ -145,7 +145,9 @@ public class ImageController implements Initializable{
 
     @FXML
     void nextQuestion(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("questiontwoscene.fxml")); 
+        
+        if(perguntasRespondidas == 1){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questiontwoscene.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {
@@ -156,6 +158,126 @@ public class ImageController implements Initializable{
             stage.setScene(scene);
             stage.show();
             mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 2){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionthreescene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 3){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionfourscene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 4){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionfivescene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 5){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionsixscene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 6){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionsevenscene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 7){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questioneightscene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 8){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questionninescene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 9){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("questiontenscene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+        else if(perguntasRespondidas == 10){
+            System.out.println(score);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("scene.fxml")); 
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            mediaplayer.stop();
+        }
+
     }
 
     @FXML

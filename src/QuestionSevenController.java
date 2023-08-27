@@ -1,6 +1,10 @@
 package src;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,17 +25,17 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class questionsixcontroller implements Initializable{
+public class QuestionSevenController implements Initializable{
 
     String resposta;
-    String quest = "Qual a utilidade do Criptônio em lasers?";
+    String quest = "O Xenônio foi descoberto por William Ramsay e Morris Travers em 1898. Ramsay propôs o nome 'xenônio' derivado da palavra grega 'xenos' que significa:";
     String correctquest = "b";
 
-    String[] questionSixOptions = {
-        "É usado em experimentos científicos e análises espectroscópicas.",
-        "Quando energizado por uma descarga elétrica, o criptônio emite uma luz coerente em uma determinada frequência.",
-        "Quando adicionado a uma lâmpada incandescente, aumenta a eficiência e prolonga sua vida útil.",
-        "É capaz de fornecer temperaturas extremamente baixas."
+    String[] questionSevenOptions = {
+        "Oculto.",
+        "Estranho ou convidado.",
+        "Inativo.",
+        "Novo."
     };
 
     @FXML
@@ -61,10 +65,14 @@ public class questionsixcontroller implements Initializable{
     private MediaPlayer mediaplayer;
     private Media media;
     private File file;
+    private FileWriter filetxt;
+    int perguntasRespondidas;
+    int score;
+    boolean verification;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        questionSix();
+        questionSeven();
         file = new File("src/LThemePianoCover.mp3");
         media = new Media(file.toURI().toString());
         mediaplayer = new MediaPlayer(media);
@@ -96,9 +104,48 @@ public class questionsixcontroller implements Initializable{
 
     @FXML
     void verificar(ActionEvent event) {
+        String directory = System.getProperty("user.dir");
+        String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
+        
+        try{
+            BufferedReader bfr = new BufferedReader(new FileReader(caminho));
+            String line;
+            while((line = bfr.readLine()) != null){
+                String[] nums = line.split(",");
+
+                perguntasRespondidas = Integer.parseInt(nums[0]);
+
+                score = Integer.parseInt(nums[1]);
+
+                verification = Boolean.parseBoolean(nums[2]);
+            }
+            bfr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
         if(resposta.equals(correctquest)){
-            System.out.println();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
+            score++;
+            verification = true;
+        } else{
+            verification = false;
+        } 
+
+        perguntasRespondidas++;
+        try{
+            filetxt = new FileWriter(caminho);
+            BufferedWriter bfw = new BufferedWriter(filetxt);
+            String newValues = perguntasRespondidas + "," + score + "," + verification;
+            bfw.write(newValues);
+            bfw.flush();
+            bfw.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+           
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {
@@ -108,30 +155,16 @@ public class questionsixcontroller implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            mediaplayer.stop();
-            } //else {
-        //     System.out.println();
-        //     FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
-        //     try {
-        //         root = loader.load();
-        //     } catch (IOException e) {
-        //         e.printStackTrace();
-        //     }
-        //     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //     scene = new Scene(root);
-        //     stage.setScene(scene);
-        //     stage.show();
-            
-        // }   
+            mediaplayer.stop();   
              
      }
 
-     public void questionSix(){
+     public void questionSeven(){
         labelpergunta.setText(quest);
-        resposta1.setText(questionSixOptions[0]);
-        resposta2.setText(questionSixOptions[1]);
-        resposta3.setText(questionSixOptions[2]);
-        resposta4.setText(questionSixOptions[3]);
+        resposta1.setText(questionSevenOptions[0]);
+        resposta2.setText(questionSevenOptions[1]);
+        resposta3.setText(questionSevenOptions[2]);
+        resposta4.setText(questionSevenOptions[3]);
     }
 }
 

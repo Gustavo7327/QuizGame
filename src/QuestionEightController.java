@@ -1,6 +1,10 @@
 package src;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,17 +25,17 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class questiontencontroller implements Initializable{
+public class QuestionEightController implements Initializable{
 
     String resposta;
-    String quest = "Temos, abaixo, as configurações eletrônicas de alguns elementos no estado fundamental. A configuração eletrônica que corresponde a um gás nobre é: ";
-    String correctquest = "a";
+    String quest = "Certo isótopo do Radônio possui 86 prótons, 86 eletróns e número de massa 222, logo, o número atômico desse elemento é: ";
+    String correctquest = "d";
 
-    String[] questionTenOptions = {
-        "1s2 2s2 2p6 3s2 3p6.",
-        "1s2 2s2 2p6 3s2 3p2.",
-        "1s2 2s2 2p6 3s2 3p3.",
-        "1s2 2s2 2p6 3s2 3p6 4s2."
+    String[] questionEightOptions = {
+        "Nenhuma das Alternativas.",
+        "136.",
+        "222.",
+        "86."
     };
 
     @FXML
@@ -61,10 +65,14 @@ public class questiontencontroller implements Initializable{
     private MediaPlayer mediaplayer;
     private Media media;
     private File file;
+    private FileWriter filetxt;
+    int perguntasRespondidas;
+    int score;
+    boolean verification;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        questionTen();
+        questionEight();
         file = new File("src/LThemePianoCover.mp3");
         media = new Media(file.toURI().toString());
         mediaplayer = new MediaPlayer(media);
@@ -96,9 +104,48 @@ public class questiontencontroller implements Initializable{
 
     @FXML
     void verificar(ActionEvent event) {
+        String directory = System.getProperty("user.dir");
+        String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
+        
+        try{
+            BufferedReader bfr = new BufferedReader(new FileReader(caminho));
+            String line;
+            while((line = bfr.readLine()) != null){
+                String[] nums = line.split(",");
+
+                perguntasRespondidas = Integer.parseInt(nums[0]);
+
+                score = Integer.parseInt(nums[1]);
+
+                verification = Boolean.parseBoolean(nums[2]);
+            }
+            bfr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
         if(resposta.equals(correctquest)){
-            System.out.println();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
+            score++;
+            verification = true;
+        } else{
+            verification = false;
+        } 
+
+        perguntasRespondidas++;
+        try{
+            filetxt = new FileWriter(caminho);
+            BufferedWriter bfw = new BufferedWriter(filetxt);
+            String newValues = perguntasRespondidas + "," + score + "," + verification;
+            bfw.write(newValues);
+            bfw.flush();
+            bfw.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+           
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {
@@ -108,30 +155,16 @@ public class questiontencontroller implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            mediaplayer.stop();
-            } //else {
-        //     System.out.println();
-        //     FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
-        //     try {
-        //         root = loader.load();
-        //     } catch (IOException e) {
-        //         e.printStackTrace();
-        //     }
-        //     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //     scene = new Scene(root);
-        //     stage.setScene(scene);
-        //     stage.show();
-            
-        // }   
+            mediaplayer.stop();   
              
      }
 
-     public void questionTen(){
+     public void questionEight(){
         labelpergunta.setText(quest);
-        resposta1.setText(questionTenOptions[0]);
-        resposta2.setText(questionTenOptions[1]);
-        resposta3.setText(questionTenOptions[2]);
-        resposta4.setText(questionTenOptions[3]);
+        resposta1.setText(questionEightOptions[0]);
+        resposta2.setText(questionEightOptions[1]);
+        resposta3.setText(questionEightOptions[2]);
+        resposta4.setText(questionEightOptions[3]);
     }
 }
 

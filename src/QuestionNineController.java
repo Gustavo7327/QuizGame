@@ -1,6 +1,10 @@
 package src;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,17 +25,17 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class questionfivecontroller implements Initializable{
+public class QuestionNineController implements Initializable{
 
     String resposta;
-    String quest = "Qual a principal característica dos Gases Nobres?";
+    String quest = "O Oganessônio foi alocado no grupo dos gases nobres. Com isso, muito se especulou se tal elemento apresentaria grande estabilidade, característica desse grupo. A alocação do Og no grupo 18 se deu por:";
     String correctquest = "c";
 
-    String[] questionFiveOptions = {
-        "Precisam associar-se a outro elemento para ficar estável.",
-        "Pertencem ao grupo 17 da tabela periódica.",
-        "Possuem baixa reatividade química, devido à sua camada externa de valência completa.",
-        "O Hélio é o único que não possue 8 életrons em sua camada de valência."
+    String[] questionNineOptions = {
+        "Esse elemento ser altamente estável.",
+        "Esse elemento ter as mesmas propriedades químicas dos demais gases nobres.",
+        "Esse elemento possuir oito elétrons em sua camada de valência.",
+        "Esse elemento possuir uma alta energia de ionização."
     };
 
     @FXML
@@ -61,11 +65,14 @@ public class questionfivecontroller implements Initializable{
     private MediaPlayer mediaplayer;
     private Media media;
     private File file;
-
+    private FileWriter filetxt;
+    int perguntasRespondidas;
+    int score;
+    boolean verification;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        questionFive();
+        questionNine();
         file = new File("src/LThemePianoCover.mp3");
         media = new Media(file.toURI().toString());
         mediaplayer = new MediaPlayer(media);
@@ -97,9 +104,48 @@ public class questionfivecontroller implements Initializable{
 
     @FXML
     void verificar(ActionEvent event) {
+        String directory = System.getProperty("user.dir");
+        String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
+        
+        try{
+            BufferedReader bfr = new BufferedReader(new FileReader(caminho));
+            String line;
+            while((line = bfr.readLine()) != null){
+                String[] nums = line.split(",");
+
+                perguntasRespondidas = Integer.parseInt(nums[0]);
+
+                score = Integer.parseInt(nums[1]);
+
+                verification = Boolean.parseBoolean(nums[2]);
+            }
+            bfr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
         if(resposta.equals(correctquest)){
-            System.out.println();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
+            score++;
+            verification = true;
+        } else{
+            verification = false;
+        } 
+
+        perguntasRespondidas++;
+        try{
+            filetxt = new FileWriter(caminho);
+            BufferedWriter bfw = new BufferedWriter(filetxt);
+            String newValues = perguntasRespondidas + "," + score + "," + verification;
+            bfw.write(newValues);
+            bfw.flush();
+            bfw.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+           
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {
@@ -109,29 +155,16 @@ public class questionfivecontroller implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-            mediaplayer.stop();
-            } //else {
-        //     System.out.println();
-        //     FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
-        //     try {
-        //         root = loader.load();
-        //     } catch (IOException e) {
-        //         e.printStackTrace();
-        //     }
-        //     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //     scene = new Scene(root);
-        //     stage.setScene(scene);
-        //     stage.show();
-            
-        // }   
+            mediaplayer.stop();  
              
      }
 
-     public void questionFive(){
+     public void questionNine(){
         labelpergunta.setText(quest);
-        resposta1.setText(questionFiveOptions[0]);
-        resposta2.setText(questionFiveOptions[1]);
-        resposta3.setText(questionFiveOptions[2]);
-        resposta4.setText(questionFiveOptions[3]);
+        resposta1.setText(questionNineOptions[0]);
+        resposta2.setText(questionNineOptions[1]);
+        resposta3.setText(questionNineOptions[2]);
+        resposta4.setText(questionNineOptions[3]);
     }
 }
+

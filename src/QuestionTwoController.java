@@ -1,6 +1,10 @@
 package src;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,17 +25,17 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class questionninecontroller implements Initializable{
+public class QuestionTwoController implements Initializable{
 
     String resposta;
-    String quest = "O Oganessônio foi alocado no grupo dos gases nobres. Com isso, muito se especulou se tal elemento apresentaria grande estabilidade, característica desse grupo. A alocação do Og no grupo 18 se deu por:";
-    String correctquest = "c";
+    String quest = "Em que ano o gás Hélio foi descoberto? Como ele foi descoberto?";
+    String correctquest = "b";
 
-    String[] questionNineOptions = {
-        "Esse elemento ser altamente estável.",
-        "Esse elemento ter as mesmas propriedades químicas dos demais gases nobres.",
-        "Esse elemento possuir oito elétrons em sua camada de valência.",
-        "Esse elemento possuir uma alta energia de ionização."
+    String[] questionTwoOptions = {
+        "Foi descoberto em 1898 a partir da destilação fracionada do ar líquido.",
+        "Foi descoberto em 1868 durante um estudo do eclipse solar.",
+        "Foi descoberto em 1894 durante um estudo sobre o nitrogênio atmosférico.",
+        "Foi descoberto em 1898 durante um estudo do resíduo deixado após a destilação do ar líquido."
     };
 
     @FXML
@@ -61,10 +65,14 @@ public class questionninecontroller implements Initializable{
     private MediaPlayer mediaplayer;
     private Media media;
     private File file;
+    private FileWriter filetxt;
+    int perguntasRespondidas;
+    int score;
+    boolean verification;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        questionNine();
+        questionTwo();
         file = new File("src/LThemePianoCover.mp3");
         media = new Media(file.toURI().toString());
         mediaplayer = new MediaPlayer(media);
@@ -96,9 +104,48 @@ public class questionninecontroller implements Initializable{
 
     @FXML
     void verificar(ActionEvent event) {
+        String directory = System.getProperty("user.dir");
+        String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
+        
+        try{
+            BufferedReader bfr = new BufferedReader(new FileReader(caminho));
+            String line;
+            while((line = bfr.readLine()) != null){
+                String[] nums = line.split(",");
+
+                perguntasRespondidas = Integer.parseInt(nums[0]);
+
+                score = Integer.parseInt(nums[1]);
+
+                verification = Boolean.parseBoolean(nums[2]);
+            }
+            bfr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
         if(resposta.equals(correctquest)){
-            System.out.println();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
+            score++;
+            verification = true;
+        } else{
+            verification = false;
+        }
+
+        perguntasRespondidas++;
+        try{
+            filetxt = new FileWriter(caminho);
+            BufferedWriter bfw = new BufferedWriter(filetxt);
+            String newValues = perguntasRespondidas + "," + score + "," + verification;
+            bfw.write(newValues);
+            bfw.flush();
+            bfw.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+           
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {
@@ -109,29 +156,13 @@ public class questionninecontroller implements Initializable{
             stage.setScene(scene);
             stage.show();
             mediaplayer.stop();
-            } //else {
-        //     System.out.println();
-        //     FXMLLoader loader = new FXMLLoader(getClass().getResource("imageviewer.fxml")); 
-        //     try {
-        //         root = loader.load();
-        //     } catch (IOException e) {
-        //         e.printStackTrace();
-        //     }
-        //     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //     scene = new Scene(root);
-        //     stage.setScene(scene);
-        //     stage.show();
-            
-        // }   
-             
      }
 
-     public void questionNine(){
+    public void questionTwo(){
         labelpergunta.setText(quest);
-        resposta1.setText(questionNineOptions[0]);
-        resposta2.setText(questionNineOptions[1]);
-        resposta3.setText(questionNineOptions[2]);
-        resposta4.setText(questionNineOptions[3]);
+        resposta1.setText(questionTwoOptions[0]);
+        resposta2.setText(questionTwoOptions[1]);
+        resposta3.setText(questionTwoOptions[2]);
+        resposta4.setText(questionTwoOptions[3]);
     }
 }
-

@@ -164,6 +164,8 @@ public class QuestionOneController implements Initializable{
         if(resposta.equals(responses[0])){
             score++; 
             verification = true;  
+        } else{
+            verification = false;
         } 
 
         perguntasRespondidas++;
