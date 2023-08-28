@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,8 +21,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -109,6 +114,23 @@ public class QuestionOneController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         questionOne();
+
+        panequestion.setStyle("-fx-background-color:rgb(11, 96, 192);");
+        labelpergunta.setStyle("-fx-text-fill:#00ff00");
+        resposta1.setStyle("-fx-text-fill:#00ff00");
+        resposta2.setStyle("-fx-text-fill:#00ff00");
+        resposta3.setStyle("-fx-text-fill:#00ff00");
+        resposta4.setStyle("-fx-text-fill:#00ff00");
+        buttonverificar.setStyle("-fx-background-color:white;");
+        buttonverificar.setStyle("-fx-text-fill:black;");
+
+
+        //labelpergunta.setBackground(new Background(new BackgroundFill(Color.ORANGE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //resposta1.setBackground(new Background(new BackgroundFill(Color.ORANGE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //resposta2.setBackground(new Background(new BackgroundFill(Color.ORANGE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //resposta3.setBackground(new Background(new BackgroundFill(Color.ORANGE, CornerRadii.EMPTY, Insets.EMPTY)));
+        //resposta4.setBackground(new Background(new BackgroundFill(Color.ORANGE, CornerRadii.EMPTY, Insets.EMPTY)));
+
         file = new File("src/LThemePianoCover.mp3");
         media = new Media(file.toURI().toString());
         mediaplayer = new MediaPlayer(media);

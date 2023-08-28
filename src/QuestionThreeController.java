@@ -73,6 +73,15 @@ public class QuestionThreeController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         questionThree();
+        panequestion.setStyle("-fx-background-color:rgb(11, 96, 192);");
+        labelpergunta.setStyle("-fx-text-fill:#00ff00");
+        resposta1.setStyle("-fx-text-fill:#00ff00");
+        resposta2.setStyle("-fx-text-fill:#00ff00");
+        resposta3.setStyle("-fx-text-fill:#00ff00");
+        resposta4.setStyle("-fx-text-fill:#00ff00");
+        buttonverificar.setStyle("-fx-background-color:white;");
+        buttonverificar.setStyle("-fx-text-fill:black;");
+        
         file = new File("src/LThemePianoCover.mp3");
         media = new Media(file.toURI().toString());
         mediaplayer = new MediaPlayer(media);

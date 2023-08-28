@@ -48,7 +48,10 @@ public class Start implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        labelstart.setStyle("-fx-text-fill:yellow;");
+        panestart.setStyle("-fx-background-color:rgb(11, 96, 192);");
+        startbutton.setStyle("-fx-background-color:white;");
+        startbutton.setStyle("-fx-text-fill:black;");
         file = new File("src/pouestourado.mp3");
         imagestart.setImage(image);
         TranslateTransition translate = new TranslateTransition();

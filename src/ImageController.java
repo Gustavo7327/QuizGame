@@ -105,9 +105,14 @@ public class ImageController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        buttonimage.setStyle("-fx-background-color:white;");
+        buttonimage.setStyle("-fx-text-fill:black;");
+        buttonluck.setStyle("-fx-background-color:white;");
+        buttonluck.setStyle("-fx-text-fill:black;");
+
         String directory = System.getProperty("user.dir");
         String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
-        
+
         try{
             BufferedReader bfr = new BufferedReader(new FileReader(caminho));
             String line;
@@ -124,6 +129,18 @@ public class ImageController implements Initializable{
         }
         catch(IOException e){
             e.printStackTrace();
+        }
+
+        if(perguntasRespondidas == 10){
+            buttonimage.setText("RESULTADOS");
+            buttonluck.setVisible(false);
+            labelname.setVisible(false);
+            if(verification == false){
+                msglabel.setText("VOCÊ ERROU A ÚLTIMA PERGUNTA :(");
+            } else{
+                msglabel.setText("VOCÊ ACERTOU A ÚLTIMA PERGUNTA :)");
+            }
+            
         }
 
         if(verification == true){
@@ -265,7 +282,7 @@ public class ImageController implements Initializable{
         }
         else if(perguntasRespondidas == 10){
             System.out.println(score);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("scene.fxml")); 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("finalscene.fxml")); 
             try {
                 root = loader.load();
             } catch (IOException e) {

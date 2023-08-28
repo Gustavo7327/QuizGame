@@ -19,8 +19,8 @@ public class Main extends Application{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scene.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        String css = this.getClass().getResource("animationlabel.css").toExternalForm();
-        scene.getStylesheets().add(css);
+        //String css = this.getClass().getResource("animationlabel.css").toExternalForm();
+        //scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
  
