@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaView;
@@ -51,18 +52,29 @@ public class FinalSceneController implements Initializable{
     private Parent root;
     private Stage stage;
     private Scene scene;
-    //private File file;
     int score;
     int perguntasRespondidas;
     boolean verification;
     String caminho;
     String directory;
     private FileWriter filetxt;
+
+    Image pocao1 = new Image(getClass().getResourceAsStream("radiacao.png"));
+    Image pocao2 = new Image(getClass().getResourceAsStream("pocoesvermelha.png"));
+    Image pocao3 = new Image(getClass().getResourceAsStream("pocoescoloridas.png"));
+    Image pocao4 = new Image(getClass().getResourceAsStream("variaspocoes.png"));
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        imageleftbottom.setImage(pocao1);
+        imagelefttop.setImage(pocao2);
+        imagerighttop.setImage(pocao3);
+        imagerightbottom.setImage(pocao4);
+
         restartbutton.setStyle("-fx-background-color:white;");
         restartbutton.setStyle("-fx-text-fill:black;");
+        finalpane.setStyle("-fx-background-color:rgb(11, 96, 192);");
         
         directory = System.getProperty("user.dir");
         caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";

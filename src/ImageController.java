@@ -109,6 +109,7 @@ public class ImageController implements Initializable{
         buttonimage.setStyle("-fx-text-fill:black;");
         buttonluck.setStyle("-fx-background-color:white;");
         buttonluck.setStyle("-fx-text-fill:black;");
+        paneimage.setStyle("-fx-background-color:rgb(11, 96, 192);");
 
         String directory = System.getProperty("user.dir");
         String caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";

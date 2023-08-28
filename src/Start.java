@@ -37,6 +37,18 @@ public class Start implements Initializable{
     @FXML
     private ImageView imagestart;
 
+    @FXML
+    private ImageView imagetwo;
+
+    @FXML
+    private ImageView imageone;
+    
+    @FXML
+    private ImageView imagethree;
+      
+    @FXML
+    private ImageView imagefour;
+
     private Parent root;
     private Stage stage;
     private Scene scene;
@@ -44,16 +56,27 @@ public class Start implements Initializable{
     private MediaPlayer mediaplayer;
     private File file;
     
-    Image image = new Image(getClass().getResourceAsStream("masss.png"));
+    Image imagemas = new Image(getClass().getResourceAsStream("masss.png"));
+    Image image1 = new Image(getClass().getResourceAsStream("atmosferaatomica.png"));
+    Image image2 = new Image(getClass().getResourceAsStream("pocaoesquentando.png"));
+    Image image3 = new Image(getClass().getResourceAsStream("reacaoquimica.png"));
+    Image image4 = new Image(getClass().getResourceAsStream("pocoes.png"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        imageone.setImage(image1);
+        imagetwo.setImage(image2);
+        imagethree.setImage(image3);
+        imagefour.setImage(image4);
+
         labelstart.setStyle("-fx-text-fill:yellow;");
         panestart.setStyle("-fx-background-color:rgb(11, 96, 192);");
         startbutton.setStyle("-fx-background-color:white;");
         startbutton.setStyle("-fx-text-fill:black;");
-        file = new File("src/pouestourado.mp3");
-        imagestart.setImage(image);
+
+        file = new File("src/pou.mp3");
+        imagestart.setImage(imagemas);
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(labelstart);
         translate.setByX(293);

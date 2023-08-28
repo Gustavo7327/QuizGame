@@ -73,6 +73,7 @@ public class QuestionFiveController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         questionFive();
+        
         panequestion.setStyle("-fx-background-color:rgb(11, 96, 192);");
         labelpergunta.setStyle("-fx-text-fill:#00ff00");
         resposta1.setStyle("-fx-text-fill:#00ff00");

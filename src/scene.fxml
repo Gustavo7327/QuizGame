@@ -23,5 +23,9 @@
          <image>
             <Image url="@masss.png" />
          </image></ImageView>
+      <ImageView fx:id="imagetwo" fitHeight="135.0" fitWidth="150.0" layoutX="21.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagefour" fitHeight="135.0" fitWidth="150.0" layoutX="579.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagethree" fitHeight="135.0" fitWidth="150.0" layoutX="579.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageone" fitHeight="135.0" fitWidth="150.0" layoutX="21.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
