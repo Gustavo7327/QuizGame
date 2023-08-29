@@ -2,6 +2,7 @@ package src;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,8 +21,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class FinalSceneController implements Initializable{
 
@@ -64,8 +68,26 @@ public class FinalSceneController implements Initializable{
     Image pocao3 = new Image(getClass().getResourceAsStream("pocoescoloridas.png"));
     Image pocao4 = new Image(getClass().getResourceAsStream("variaspocoes.png"));
 
+    private File filevideo;
+    private Media media;
+    private MediaPlayer video;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        filevideo = new File("src/tropadofelipe.mp4");
+        media = new Media(filevideo.toURI().toString());
+        video = new MediaPlayer(media);
+        mediaviewer.setMediaPlayer(video);
+        video.setOnEndOfMedia(new Runnable(){
+            @Override
+            public void run(){
+                video.seek(Duration.ZERO);
+                video.play();
+            }
+         });
+        video.play();
+        
 
         imageleftbottom.setImage(pocao1);
         imagelefttop.setImage(pocao2);
@@ -75,6 +97,7 @@ public class FinalSceneController implements Initializable{
         restartbutton.setStyle("-fx-background-color:white;");
         restartbutton.setStyle("-fx-text-fill:black;");
         finalpane.setStyle("-fx-background-color:rgb(11, 96, 192);");
+        scorelabel.setStyle("-fx-text-fill:white;");
         
         directory = System.getProperty("user.dir");
         caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
@@ -129,6 +152,7 @@ public class FinalSceneController implements Initializable{
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            video.stop();
     }
 
 }
