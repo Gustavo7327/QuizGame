@@ -121,6 +121,7 @@ public class FinalSceneController implements Initializable{
         }
 
         scorelabel.setText("Score: " + score);
+
     }
 
 
