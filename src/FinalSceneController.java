@@ -53,6 +53,9 @@ public class FinalSceneController implements Initializable{
     @FXML
     private Label scorelabel;
 
+    @FXML
+    private Label labeldev;
+
     private Parent root;
     private Stage stage;
     private Scene scene;
@@ -98,6 +101,7 @@ public class FinalSceneController implements Initializable{
         restartbutton.setStyle("-fx-text-fill:black;");
         finalpane.setStyle("-fx-background-color:rgb(11, 96, 192);");
         scorelabel.setStyle("-fx-text-fill:white;");
+        labeldev.setStyle("-fx-text-fill:white");
         
         directory = System.getProperty("user.dir");
         caminho = directory + "/" + "src" + "/" + "perguntasRespondidas.csv";
