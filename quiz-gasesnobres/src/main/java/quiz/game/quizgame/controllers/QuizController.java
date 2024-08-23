@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,9 +58,16 @@ public class QuizController implements Initializable{
     private Media media;
     private File file;
 
+    private Thread timerThread;
+    private int time = 30;
+
 
     @FXML
     void verificar(ActionEvent event) {
+        if(timerThread != null){
+            timerThread.interrupt();
+            System.out.println("chegou aqui");
+        }
         mp.dispose();
     }
 
@@ -97,9 +105,33 @@ public class QuizController implements Initializable{
             tlOptions.getKeyFrames().add(kf);
         }
 
+        timerThread = new Thread(() -> {
+            while (time > 0 && !timerThread.isInterrupted()) {
+                try{
+                    Thread.sleep(1000);
+                    Platform.runLater(() -> {
+                        time--;
+                        timer.setText(String.valueOf(time));
+                        if(time <= 0){
+                            System.out.println("Foi");
+                            timerThread.interrupt();
+                        }
+                    });
+                } 
+                catch(InterruptedException e){
+                    e.printStackTrace();
+                    break;
+                }
+            }
+        });
+
         timeline.play();
         timeline.setOnFinished(event -> tlOptions.play());
-
+        tlOptions.setOnFinished(event -> {
+            timerThread.start();
+            responder.setDisable(false);
+        });
+        
     }
 
 }

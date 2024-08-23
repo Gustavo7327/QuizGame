@@ -17,7 +17,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="responder" layoutX="1027.0" layoutY="575.0" mnemonicParsing="false" onAction="#verificar" prefHeight="40.0" prefWidth="153.0" text="Responder">
+      <Button fx:id="responder" disable="true" layoutX="1027.0" layoutY="575.0" mnemonicParsing="false" onAction="#verificar" prefHeight="40.0" prefWidth="153.0" text="Responder">
          <font>
             <Font size="18.0" />
          </font>
@@ -31,10 +31,10 @@
          <children>
             <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
                <children>
-                  <RadioButton fx:id="option1" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="op" />
-                     </toggleGroup>
+                  <RadioButton fx:id="option1" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true" toggleGroup="$op">
+                  <toggleGroup>
+                     <ToggleGroup fx:id="op" />
+                  </toggleGroup>
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -49,10 +49,7 @@
             </HBox>
             <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
                <children>
-                  <RadioButton fx:id="option2" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="op" />
-                     </toggleGroup>
+                  <RadioButton fx:id="option2" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true" toggleGroup="$op">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -67,10 +64,7 @@
             </HBox>
             <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
                <children>
-                  <RadioButton fx:id="option3" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="op" />
-                     </toggleGroup>
+                  <RadioButton fx:id="option3" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true" toggleGroup="$op">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -82,10 +76,7 @@
             </HBox>
             <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
                <children>
-                  <RadioButton fx:id="option4" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="op" />
-                     </toggleGroup>
+                  <RadioButton fx:id="option4" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" wrapText="true" toggleGroup="$op">
                      <font>
                         <Font size="17.0" />
                      </font>
