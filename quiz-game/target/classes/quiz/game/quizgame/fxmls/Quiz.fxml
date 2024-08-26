@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="quiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.game.quizgame.controllers.QuizController">
+   <children>
+      <Label fx:id="question" alignment="TOP_LEFT" layoutX="20.0" layoutY="14.0" lineSpacing="2.0" prefHeight="224.0" prefWidth="974.0" text="(Enem 2010) Não é difícil entender o que ocorreu no Brasil nos anos imediatamente anteriores ao golpe militar de 1964. A diminuição da oferta de empregos e a desvalorização dos salários, provocadas pela inflação, levaram a uma intensa mobilização política popular, marcada por sucessivas ondas grevistas de várias categorias profissionais, o que aprofundou as tensões sociais. Dessa vez, as classes trabalhadoras se recusaram a pagar o pato pelas “sobras” do modelo econômico juscelinista. Segundo o texto, os conflitos sociais ocorridos no início dos anos 1960 decorreram principalmente" textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="responder" disable="true" layoutX="1027.0" layoutY="596.0" mnemonicParsing="false" onAction="#verificar" prefHeight="40.0" prefWidth="153.0" text="Responder">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="timer" alignment="CENTER" layoutX="1027.0" layoutY="31.0" prefHeight="97.0" prefWidth="135.0" text="30" textAlignment="CENTER">
+         <font>
+            <Font size="80.0" />
+         </font>
+      </Label>
+      <VBox fx:id="options" layoutX="20.0" layoutY="260.0" prefHeight="323.0" prefWidth="1160.0">
+         <children>
+            <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
+               <children>
+                  <RadioButton fx:id="option1" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" toggleGroup="$op" wrapText="true">
+                  <toggleGroup>
+                     <ToggleGroup fx:id="op" />
+                  </toggleGroup>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
+               <children>
+                  <RadioButton fx:id="option2" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" toggleGroup="$op" wrapText="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
+               <children>
+                  <RadioButton fx:id="option3" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" toggleGroup="$op" wrapText="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox opacity="0.0" prefHeight="58.0" prefWidth="1160.0">
+               <children>
+                  <RadioButton fx:id="option4" alignment="TOP_LEFT" lineSpacing="2.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="1160.0" text="Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção  Texto da primeira opção " textAlignment="JUSTIFY" toggleGroup="$op" wrapText="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</AnchorPane>
