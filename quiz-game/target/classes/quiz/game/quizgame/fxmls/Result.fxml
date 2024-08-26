@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.game.quizgame.controllers.ResultController">
+   <children>
+      <Button fx:id="next" layoutX="479.0" layoutY="408.0" mnemonicParsing="false" onAction="#nextQuestion" text="next" />
+      <Label fx:id="result" layoutX="367.0" layoutY="196.0" prefHeight="16.0" prefWidth="318.0" />
+   </children>
+</AnchorPane>
