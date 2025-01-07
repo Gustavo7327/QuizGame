@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,9 +37,9 @@ public class Main extends Application{
     public void logout(Stage stage){
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
-        alert.setHeaderText("You're about to logout!");
-        alert.setContentText("Are you sure you want to leave?");
+        alert.setTitle("Sair");
+        alert.setHeaderText("Você tentou sair do quiz");
+        alert.setContentText("Tem certeza que quer sair?");
 
         if(alert.showAndWait().get() == ButtonType.OK){
             int current = 0;
@@ -55,7 +56,7 @@ public class Main extends Application{
         }catch(IOException e){
             e.printStackTrace();
         }
-            stage.close();
+            Platform.exit();
         }
     }
 }
