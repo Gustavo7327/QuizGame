@@ -90,17 +90,20 @@ public class QuizController implements Initializable{
 
     @FXML
     void verificar(ActionEvent event) {
-        if(timerThread != null){
+        lockInteraction();
+
+        if (timerThread != null) {
             timerThread.interrupt();
-            System.out.println("chegou aqui");
         }
 
-        if(option1.isSelected()) correct = 1;
-        else if(option2.isSelected()) correct = 2;
-        else if(option3.isSelected()) correct = 3;
-        else if(option4.isSelected()) correct = 4;
+        // Identificar a opção selecionada
+        if (option1.isSelected()) correct = 1;
+        else if (option2.isSelected()) correct = 2;
+        else if (option3.isSelected()) correct = 3;
+        else if (option4.isSelected()) correct = 4;
         else correct = 0;
 
+        // Atualizar os dados no arquivo CSV
         try {
             br = new BufferedReader(new FileReader("src/main/java/quiz/game/quizgame/controllers/control.csv"));
             String line = br.readLine();
@@ -110,40 +113,72 @@ public class QuizController implements Initializable{
             score = Integer.parseInt(params[1]);
             verification = Boolean.parseBoolean(params[2]);
 
-            if(correct == quest.getCorrect()){
+            if (correct == quest.getCorrect()) {
                 score++;
                 verification = true;
-            }
-            else{
+            } else {
                 verification = false;
             }
             current++;
 
-            bw = new BufferedWriter(new FileWriter("src/main/java/quiz/game/quizgame/controllers/control.csv"));    
+            bw = new BufferedWriter(new FileWriter("src/main/java/quiz/game/quizgame/controllers/control.csv"));
             String newValues = current + "," + score + "," + verification;
             bw.write(newValues);
             bw.flush();
-            bw.close(); 
-            br.close();   
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            bw.close();
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        // Exibir as respostas corretas e incorretas
+        highlightAnswers();
+
+        // Adicionar o delay de 3 segundos antes de carregar a próxima tela
+        Timeline delay = new Timeline(new KeyFrame(Duration.seconds(3), e -> loadResultScreen(event)));
+        delay.play();
+    }
+
+    private void highlightAnswers() {
+        // Destacar a opção correta em verde e as erradas em vermelho
+        if (quest.getCorrect() == 1) option1.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        else option1.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+
+        if (quest.getCorrect() == 2) option2.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        else option2.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+
+        if (quest.getCorrect() == 3) option3.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        else option3.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+
+        if (quest.getCorrect() == 4) option4.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        else option4.setStyle("-fx-background-color: #F44336; -fx-text-fill: white;");
+    }
+
+    private void loadResultScreen(ActionEvent event) {
         try {
             root = FXMLLoader.load(getClass().getResource("../fxmls/Result.fxml"));
+    
+            if (event != null) {
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            } else {
+                stage = (Stage) quiz.getScene().getWindow();
+            }
+
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+            if (mp != null) {
+                mp.dispose();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        mp.dispose();
-        stage.show();
+    }
+    
 
-        mp.dispose();
+    private void lockInteraction() {
+        responder.setDisable(true);
     }
 
     @Override
@@ -200,18 +235,22 @@ public class QuizController implements Initializable{
 
         timerThread = new Thread(() -> {
             while (time > 0 && !timerThread.isInterrupted()) {
-                try{
+                try {
                     Thread.sleep(1000);
                     Platform.runLater(() -> {
                         time--;
                         timer.setText(String.valueOf(time));
-                        if(time <= 0){
-                            System.out.println("Foi");
+                        if (time <= 0) {
                             timerThread.interrupt();
+
+                            lockInteraction();
+                            highlightAnswers();
+    
+                            Timeline delay = new Timeline(new KeyFrame(Duration.seconds(3), e -> loadResultScreen(null)));
+                            delay.play();
                         }
                     });
-                } 
-                catch(InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                     break;
                 }
