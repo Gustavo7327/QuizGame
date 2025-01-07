@@ -1,0 +1,19 @@
+#menu, #quiz{
+    -fx-background-image: url("../imgs/fundo.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1200;
+    -fx-opacity: 0.8;
+}
+
+#start{
+    -fx-background-radius: 20;
+    -fx-background-color: black;
+    -fx-border-radius: 12;
+    -fx-opacity: 1;
+    -fx-fill: white;
+    -fx-border-color: transparent;
+}
+
+#title {
+    -fx-fill: yellow;
+}
