@@ -16,6 +16,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ResultController implements Initializable{
@@ -24,7 +26,16 @@ public class ResultController implements Initializable{
     private Button next;
 
     @FXML
+    private Button restart;
+
+    @FXML
     private Label result;
+    
+    @FXML
+    private HBox buttonContainer;
+
+    @FXML
+    private ImageView imageContainer;
 
     private Parent root;
     private Stage stage;
@@ -43,6 +54,11 @@ public class ResultController implements Initializable{
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    void restartQuiz(ActionEvent event) {
+        System.out.println("funciona");
     }
 
     @Override
