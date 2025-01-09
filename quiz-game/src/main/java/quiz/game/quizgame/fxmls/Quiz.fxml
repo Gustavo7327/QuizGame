@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="quiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.game.quizgame.controllers.QuizController" stylesheets="@../resources/css/quiz.css">
+<AnchorPane fx:id="quiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" stylesheets="@../resources/css/quiz.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.game.quizgame.controllers.QuizController">
    <children>
-      <Label fx:id="question" alignment="TOP_LEFT" layoutX="20.0" layoutY="14.0" lineSpacing="2.0" prefHeight="224.0" prefWidth="974.0" text="(Enem 2010) Não é difícil entender o que ocorreu no Brasil nos anos imediatamente anteriores ao golpe militar de 1964. A diminuição da oferta de empregos e a desvalorização dos salários, provocadas pela inflação, levaram a uma intensa mobilização política popular, marcada por sucessivas ondas grevistas de várias categorias profissionais, o que aprofundou as tensões sociais. Dessa vez, as classes trabalhadoras se recusaram a pagar o pato pelas “sobras” do modelo econômico juscelinista. Segundo o texto, os conflitos sociais ocorridos no início dos anos 1960 decorreram principalmente" textAlignment="JUSTIFY" wrapText="true">
+      <Label fx:id="question" alignment="TOP_LEFT" layoutX="20.0" layoutY="14.0" lineSpacing="2.0" prefHeight="236.0" prefWidth="974.0" text="(Enem 2021) Constatou-se uma ínfima inserção da indústria brasileira nas novas tecnologias ancoradas na microeletrônica, capazes de acarretar elevação da produtividade nacional de forma sustentada. Os motores do crescimento nacional, há décadas, são os grupos relacionados a commodities agroindustriais e à indústria representativa do antigo padrão fordista de produção, esta última também limitada pela baixa potencialidade futura de desencadear inovações tecnológicas capazes de proporcionar elevação sustentada da produtividade. Um efeito desse cenário para a sociedade brasileira tem sido o(a)" textAlignment="JUSTIFY" wrapText="true">
          <font>
             <Font size="22.0" />
          </font>

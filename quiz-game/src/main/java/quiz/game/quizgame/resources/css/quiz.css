@@ -6,13 +6,13 @@
 
 #question {
     -fx-text-fill: #1d3557;
-    -fx-font-size: 24px;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-wrap-text: true;
     -fx-background-color: #f1faee;
     -fx-border-color: #457b9d;
     -fx-border-width: 3;
-    -fx-padding: 15;
+    -fx-padding: 8;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
     -fx-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
